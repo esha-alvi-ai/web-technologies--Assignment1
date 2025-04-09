@@ -90,34 +90,25 @@
         }
         
         .mega-menu {
-            display: none; /* Hide the mega menu by default */
-            background-color: #f9f9f9;
             position: absolute;
-            top: 60px;
+            top: 45px;
             left: 0;
-            width: 100%;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
             padding: 20px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            width: 600px;
+            display: none;
             z-index: 1000;
-        }
-
-        .mega-menu ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .mega-menu ul li {
-            margin: 10px 0;
-        }
-
-        .mega-menu ul li a {
-            text-decoration: none;
-            color: #333;
-        }
-
-        .mega-menu ul li a:hover {
-            text-decoration: underline;
-        }
+          }
+      
+          .mega-menu.active {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            animation: fadeIn 0.3s ease-in-out;
+          }
+      
     
         .main-nav {
             position: relative;
@@ -631,36 +622,34 @@
                 <span>🛍️</span>
             </div>
         </div>
-<!-- Mega Menu -->
-<div class="mega-menu" id="mega-menu">
-    <ul>
-        <li>
-            <a href="Assignments/Assignment1CV/Assignment1.html" target="_blank">
-                <strong>Assignment 1 - Task 1</strong>
-                <p>Landing page for e-commerce website</p>
-            </a>
-        </li>
-        <li>
-            <a href="Assignments/Assignment2Landingpagewithhtmlcss/Assignment2landingpagewithcsshtml.html" target="_blank">
-                <strong>Assignment 2 - Task 1</strong>
-                <p>Responsive landing page using HTML/CSS</p>
-            </a>
-        </li>
-        <li>
-            <a href="Lab_Tasks/labassignment2landingpagewithbootstrap/Assignment2withboostrapcsshtml.html" target="_blank">
-                <strong>Lab Task 1 - Task 1</strong>
-                <p>Landing page with Bootstrap framework</p>
-            </a>
-        </li>
-        <li>
-            <a href="Lab_Tasks/labassignment2js2/form.html" target="_blank">
-                <strong>Lab Task 2 - Task 1</strong>
-                <p>Form validation and interactivity with JavaScript</p>
-            </a>
-        </li>
-    </ul>
-</div>
-
+<!-- Mega Menu --><!-- ✅ Mega Menu Trigger -->
+<div class="menu-bar">
+    <div class="menu-item" id="menu-trigger">MENU</div>
+    <div class="mega-menu" id="mega-menu">
+      <div class="task">
+        <div class="task-title">Assignment 1</div>
+        <div class="task-desc">Landing Page for E-Commerce Website</div>
+        <a href="Assignments/Assignment1CV/Assignment1.html" target="_blank" class="task-link">Open</a>
+      </div>
+      <div class="task">
+        <div class="task-title">Assignment 2</div>
+        <div class="task-desc">Responsive Landing Page Using HTML/CSS</div>
+        <a href="Assignments/Assignment2Landingpagewithhtmlcss/Assignment2landingpagewithcsshtml.html" target="_blank" class="task-link">Open</a>
+      </div>
+      <div class="task">
+        <div class="task-title">Lab Task 1</div>
+        <div class="task-desc">Landing Page with Bootstrap</div>
+        <a href="Lab_Tasks/labassignment2landingpagewithbootstrap/Assignment2withboostrapcsshtml.html" target="_blank" class="task-link">Open</a>
+      </div>
+      <div class="task">
+        <div class="task-title">Lab Task 2</div>
+        <div class="task-desc">Form Validation with JavaScript</div>
+        <a href="Lab_Tasks/labassignment2js2/form.html" target="_blank" class="task-link">Open</a>
+      </div>
+    </div>
+  </div>
+  
+  
 
 
         <div class="sub-nav">
@@ -918,25 +907,31 @@
 
 
 <script>
-    // Function to open a new tab with links to previous tasks
-    document.getElementById("previous-tasks-link").addEventListener("click", function(event) {
-        event.preventDefault(); // Prevent the default link behavior
-
-        // Create a new tab
-        var newTab = window.open('', '_blank');
-
-        // Add HTML content to the new tab
-        newTab.document.write('<html><head><title>Previous Tasks</title></head><body>');
-        newTab.document.write('<h1>Previous Tasks</h1>');
-        newTab.document.write('<ul>');
-        newTab.document.write('<li><a href="Assignments/Assignment1CV/Assignment1.html" target="_blank"><strong>Assignment 1 - Task 1</strong> Landing page for e-commerce website</a></li>');
-        newTab.document.write('<li><a href="Assignments/Assignment2Landingpagewithhtmlcss/Assignment2landingpagewithcsshtml.html" target="_blank"><strong>Assignment 2 - Task 1</strong> Responsive landing page using HTML/CSS</a></li>');
-        newTab.document.write('<li><a href="Lab_Tasks/labassignment2landingpagewithbootstrap/Assignment2withboostrapcsshtml.html" target="_blank"><strong>Lab Task 1 - Task 1</strong> Landing page with Bootstrap framework</a></li>');
-        newTab.document.write('<li><a href="Lab_Tasks/labassignment2js2/form.html" target="_blank"><strong>Lab Task 2 - Task 1</strong> Form validation and interactivity with JavaScript</a></li>');
-        newTab.document.write('</ul>');
-        newTab.document.write('</body></html>');
+    // Get the menu trigger and mega menu elements
+    const trigger = document.getElementById('menu-trigger');
+    const megaMenu = document.getElementById('mega-menu');
+  
+    // Toggle menu visibility on click
+    trigger.addEventListener('click', function (e) {
+      e.stopPropagation(); // Prevent the event from bubbling up to the window
+      const isActive = megaMenu.classList.contains('active');
+      document.querySelectorAll('.mega-menu').forEach(menu => menu.classList.remove('active')); // Remove 'active' from all mega menus
+      if (!isActive) {
+        megaMenu.classList.add('active'); // Add 'active' to the clicked mega menu
+      }
     });
-</script>
+  
+    // Close the menu if clicked anywhere outside of it
+    window.addEventListener('click', function () {
+      megaMenu.classList.remove('active'); // Remove 'active' from the mega menu
+    });
+  
+    // Prevent closing when clicking inside the mega menu
+    megaMenu.addEventListener('click', function (e) {
+      e.stopPropagation(); // Prevent the click event from closing the menu
+    });
+  </script>
+  
 
 
 </body>
