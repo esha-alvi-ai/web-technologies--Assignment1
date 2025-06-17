@@ -1,0 +1,6 @@
+{
+  "jwtPrivateKey": "devSecretKey456",
+  "db": "mongodb://127.0.0.1:27017/devdb",
+  "sessionSecret": "devSessionSecret456",
+  "port": 4000
+}

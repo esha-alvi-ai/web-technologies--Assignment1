@@ -1,0 +1,32 @@
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Categories List</h1>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let category of categories) { %>
+          <tr>
+            <td><%= category.name %></td>
+            <td><%= category.description %></td>
+            <td class="d-flex gap-2 ">
+              <a href="/admin/categories/edit/<%= category._id %>" class="btn btn-warning">Edit</a>
+              
+              <a href="/admin/categories/delete/<%= category._id %>" class="btn btn-danger">Delete</a>
+            </td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="text-center mt-4">
+    <a href="/admin/categories/create" class="btn btn-primary btn-lg">Add New Category</a>
+  </div>
+</div>

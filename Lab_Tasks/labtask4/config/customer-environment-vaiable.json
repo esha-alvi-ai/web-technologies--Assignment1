@@ -1,0 +1,5 @@
+{
+  "jwtPrivateKey": "secretKey123",
+  "db": "mongodb://127.0.0.1:27017/bai",
+  "sessionSecret": "secretKey123"
+}

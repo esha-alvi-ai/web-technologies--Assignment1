@@ -1,0 +1,25 @@
+<h2>Order Details</h2>
+<p>Name: <%= order.customer.name %></p>
+<p>Email: <%= order.customer.email %></p>
+<p>Address: <%= order.customer.address %></p>
+<p>Status: <%= order.status %></p>
+
+<h4>Products:</h4>
+<ul>
+  <% order.products.forEach(p => { %>
+    <li>
+      <%= p.productId.name %> (Qty: <%= p.quantity %>)
+    </li>
+  <% }) %>
+</ul>
+
+<form action="/order/update/<%= order._id %>" method="POST">
+  <label>Update Status:</label>
+  <select name="status">
+    <option value="Pending" <%= order.status === 'Pending' ? 'selected' : '' %>>Pending</option>
+    <option value="Processing" <%= order.status === 'Processing' ? 'selected' : '' %>>Processing</option>
+    <option value="Shipped" <%= order.status === 'Shipped' ? 'selected' : '' %>>Shipped</option>
+    <option value="Delivered" <%= order.status === 'Delivered' ? 'selected' : '' %>>Delivered</option>
+  </select>
+  <button type="submit">Update</button>
+</form>

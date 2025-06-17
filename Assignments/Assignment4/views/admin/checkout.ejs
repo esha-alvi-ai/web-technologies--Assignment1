@@ -1,0 +1,188 @@
+
+<main id="checkout">
+    <h1>Checkout</h1>
+    <form action="/checkout" method="POST">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" required></textarea>
+      </div>
+  
+      <h2>Total: $<%= totalPrice.toFixed(2) %></h2>
+
+      <!-- Payment Method Selection -->
+      <div class="form-group">
+        <label for="payment">Payment Method:</label>
+        <div class="payment-option">
+          <label class="payment-label">
+            <input type="radio" id="payment-credit" name="payment" value="credit" required>
+            <span class="payment-option-text">
+              <i class="fas fa-credit-card"></i> Credit/Debit Card
+            </span>
+          </label>
+        </div>
+        <div class="payment-option">
+          <label class="payment-label">
+            <input type="radio" id="payment-cash" name="payment" value="cash">
+            <span class="payment-option-text">
+              <i class="fas fa-cash-register"></i> Cash on Delivery
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit">Place Order</button>
+      </div>
+    </form>
+</main>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+
+  #checkout {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+
+  #checkout h1 {
+    text-align: center;
+    color: #333;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    font-size: 1rem;
+    color: #555;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+
+  .form-group textarea {
+    height: 120px;
+    resize: vertical;
+  }
+
+  h2 {
+    text-align: right;
+    font-size: 1.2rem;
+    color: #333;
+    margin-top: 20px;
+  }
+
+  .payment-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .payment-option:hover {
+    background-color: #f0f0f0;
+  }
+
+  .payment-label {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: #555;
+  }
+
+  .payment-option-text {
+    margin-left: 10px;
+  }
+
+  .payment-option input {
+    margin-right: 10px;
+  }
+
+  .payment-option input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid #007bff;
+    outline: none;
+    transition: background-color 0.3s;
+  }
+
+  .payment-option input[type="radio"]:checked {
+    background-color: #007bff;
+    border-color: #0056b3;
+  }
+
+  .payment-option input[type="radio"]:checked::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #fff;
+    display: block;
+    margin: 2px;
+  }
+
+  .form-actions {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .form-actions button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .form-actions button:hover {
+    background-color: #0056b3;
+  }
+
+  @media (max-width: 600px) {
+    #checkout {
+      padding: 15px;
+      margin: 20px;
+    }
+
+    h2 {
+      font-size: 1rem;
+    }
+  }
+</style>

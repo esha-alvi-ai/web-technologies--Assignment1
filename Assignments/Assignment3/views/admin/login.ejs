@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .form-box {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 350px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: black;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .flash {
+      padding: 10px;
+      background-color: #ffdada;
+      color: red;
+      margin-bottom: 15px;
+      border-radius: 4px;
+    }
+    .flash-success {
+      background-color: #d4ffd4;
+      color: green;
+    }
+    .dashboard-link {
+      display: block;
+      margin-top: 15px;
+      text-align: center;
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-box">
+    <h2>Login</h2>
+
+    <% if (success) { %>
+      <div class="flash flash-success"><%= success %></div>
+    <% } %>
+    <% if (error) { %>
+      <div class="flash"><%= error %></div>
+    <% } %>
+
+    <form method="POST" action="/login">
+      <label for="email">Email</label>
+      <input type="email" name="email" required />
+      <button type="submit">Continue</button>
+    </form>
+
+    <% if (showLink) { %>
+      <a class="dashboard-link" href="/dashboard">Go to Dashboard</a>
+    <% } %>
+  </div>
+</body>
+</html>

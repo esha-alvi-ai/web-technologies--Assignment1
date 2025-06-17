@@ -1,0 +1,160 @@
+
+
+<style>
+  .cart-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .cart-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+
+  .cart-item {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #eaeaea;
+    gap: 20px;
+  }
+
+  .cart-item:last-child {
+    border-bottom: none;
+  }
+
+  .cart-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+
+  .item-details {
+    flex: 1;
+  }
+
+  .item-details p {
+    margin: 5px 0;
+    font-size: 0.95rem;
+    color: #333;
+  }
+
+  .item-details p:first-child {
+    font-weight: bold;
+  }
+
+  .cart-actions {
+    text-align: right;
+  }
+
+  .remove-btn {
+    background-color: #ff4d4f;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+  }
+
+  .remove-btn:hover {
+    background-color: #d9363e;
+  }
+
+  .total-price {
+    text-align: right;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 20px;
+    color: #222;
+  }
+
+  .cart-buttons {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .cart-buttons a {
+    display: inline-block;
+    margin: 0 10px;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: background 0.3s ease;
+  }
+
+  .btn-checkout {
+    background-color: #000;
+    color: #fff;
+  }
+
+  .btn-checkout:hover {
+    background-color: #222;
+  }
+
+  .btn-continue {
+    background-color: #ccc;
+    color: #333;
+  }
+
+  .btn-continue:hover {
+    background-color: #aaa;
+  }
+
+  .empty-message {
+    text-align: center;
+    color: #777;
+    font-size: 1.1rem;
+    padding: 40px 0;
+  }
+</style>
+
+<div class="cart-container">
+  <h1 class="cart-title">Your Shopping Bag</h1>
+
+  <% if (products.length > 0) { %>
+    <% products.forEach(item => { %>
+      <div class="cart-item">
+        <img src="/<%= item.productId.picture %>" alt="<%= item.productId.description %>">
+        <div class="item-details">
+          <p><%= item.productId.description %></p>
+          <p>Price: $<%= item.productId.price.toFixed(2) %></p>
+          <p>Quantity: <%= item.quantity %></p>
+        </div>
+        <div class="cart-actions">
+          <form action="/cart/delete/<%= item.productId._id %>" method="POST">
+            <button type="submit" class="remove-btn">Remove</button>
+          </form>
+        </div>
+      </div>
+    <% }); %>
+
+    <div class="total-price">
+      Total: $<%= totalPrice.toFixed(2) %>
+    </div>
+
+    <div class="cart-buttons">
+      <a href="/checkout" class="btn-checkout">Proceed to Checkout</a>
+      <a href="/admin/home" class="btn-continue">Continue Shopping</a>
+    </div>
+
+  <% } else { %>
+    <div class="empty-message">
+      Your cart is currently empty.
+      <div class="cart-buttons" style="margin-top: 20px;">
+        <a href="/admin/home" class="btn-continue">Shop Now</a>
+      </div>
+    </div>
+  <% } %>
+</div>

@@ -1,0 +1,40 @@
+
+
+<div class="container mt-5">
+  <h2 class="text-center mb-4">All Orders</h2>
+
+  <% if (orders.length === 0) { %>
+    <p class="text-center">No orders yet.</p>
+  <% } else { %>
+    <table class="table table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>Customer</th>
+          <th>Email</th>
+          <th>Total Price</th>
+          <th>Status</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% orders.forEach(order => { %>
+          <tr>
+            <td><%= order.customer.name %></td>
+            <td><%= order.customer.email %></td>
+            <td>Rs. <%= order.totalPrice %></td>
+            <td><%= order.status %></td>
+            <td><%= order.createdAt.toLocaleDateString() %></td>
+            <td>
+              <a href="/admin/order/<%= order._id %>">View Details</a>
+
+              <form action="/admin/order/delete/<%= order._id %>" method="POST" class="d-inline">
+                <button class="btn btn-sm btn-danger" onclick="return confirm('Delete this order?')">Delete</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } %>
+</div>

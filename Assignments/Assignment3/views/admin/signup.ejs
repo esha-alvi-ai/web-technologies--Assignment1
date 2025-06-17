@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ASOS Sign Up</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* ✂️ All your existing styles — unchanged */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f2f2f2;
+    }
+    .container {
+      display: flex;
+      flex-direction: row;
+      max-width: 1000px;
+      margin: 40px auto;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .form-section {
+      flex: 2;
+      padding: 30px;
+    }
+    .qr-section {
+      flex: 1;
+      background: #fafafa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+    }
+    .asos-logo span {
+      font-size: 50px;
+      font-weight: bold;
+    }
+    h2 {
+      margin-top: 10px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin: 15px 0 5px;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+    .readonly-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .readonly-input {
+      flex: 1;
+    }
+    .edit-btn, .show-btn {
+      padding: 8px 12px;
+      cursor: pointer;
+      background-color: #eee;
+      border: none;
+      font-weight: bold;
+    }
+    .dob-row {
+      display: flex;
+      gap: 10px;
+    }
+    .gender-row {
+      margin-top: 10px;
+    }
+    .radio-label {
+      margin-right: 15px;
+    }
+    .hint {
+      font-size: 12px;
+      color: gray;
+      margin-bottom: 10px;
+    }
+    .marketing-box {
+      background: #f9f9f9;
+      padding: 15px;
+      font-size: 13px;
+      margin: 20px 0;
+    }
+    .submit-btn {
+      background-color: black;
+      color: white;
+      font-weight: bold;
+      border: none;
+      padding: 12px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .qr-code img {
+      max-width: 200px;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-section">
+      <div class="asos-logo"><span>a</span></div>
+
+      <!-- ✅ Flash message -->
+      <% if (success.length > 0) { %>
+        <p style="color: green;"><%= success %></p>
+      <% } %>
+      <% if (error.length > 0) { %>
+        <p style="color: red;"><%= error %></p>
+      <% } %>
+
+      <form id="signupForm" action="/signup" method="POST" autocomplete="off">
+        <h2>We love new faces</h2>
+
+        <label for="email">EMAIL:</label>
+        <div class="readonly-row">
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <label for="fname">FIRST NAME:*</label>
+        <input type="text" id="fname" name="fname" required>
+
+        <label for="lname">LAST NAME:*</label>
+        <input type="text" id="lname" name="lname" required>
+
+        <label for="password">PASSWORD:*</label>
+        <div class="readonly-row">
+          <input type="password" id="password" name="password" required minlength="10">
+          <button class="show-btn" type="button" onclick="togglePassword()">👁️</button>
+        </div>
+        <div class="hint">Must be 10 or more characters.</div>
+
+        <label>DATE OF BIRTH:*</label>
+        <div class="dob-row">
+          <select id="dob-day" name="dob_day" required><option value="">Day</option></select>
+          <select id="dob-month" name="dob_month" required><option value="">Month</option></select>
+          <select id="dob-year" name="dob_year" required><option value="">Year</option></select>
+        </div>
+        <div class="hint">You need to be 16 or over to use ASOS</div>
+
+        <label>MOSTLY INTERESTED IN?</label>
+        <div class="gender-row">
+          <label class="radio-label">
+            <input type="radio" name="gender" value="Womenswear" required> Womenswear
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="gender" value="Menswear" required> Menswear
+          </label>
+        </div>
+
+        <div class="marketing-box">
+          <div class="marketing-title"><strong>BE IN THE KNOW</strong></div>
+          <div style="margin-top: 10px;">
+            I want to receive exclusive discounts, new drops and personalised offers, style tips, and more from ASOS and our partners as stated in line with our privacy notice. I can opt out anytime.
+          </div>
+          <div style="margin-top: 10px;">
+            <input type="checkbox" id="marketing" name="marketing">
+            <label for="marketing">Yes, sign me up!</label>
+          </div>
+        </div>
+
+        <button class="submit-btn" type="submit">JOIN ASOS</button>
+      </form>
+    </div>
+
+    <div class="qr-section">
+      <div class="qr-code">
+        <img src="https://pplx-res.cloudinary.com/image/private/user_uploads/72897827/d51d0156-9e45-4b3c-9e82-6138244339e3/image.jpg" alt="QR Code">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const password = document.getElementById("password");
+      password.type = password.type === "password" ? "text" : "password";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const daySelect = document.getElementById("dob-day");
+      for (let i = 1; i <= 31; i++) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = i;
+        daySelect.appendChild(option);
+      }
+
+      const monthSelect = document.getElementById("dob-month");
+      const months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+      months.forEach((month, i) => {
+        const option = document.createElement("option");
+        option.value = i + 1;
+        option.textContent = month;
+        monthSelect.appendChild(option);
+      });
+
+      const yearSelect = document.getElementById("dob-year");
+      const currentYear = new Date().getFullYear();
+      for (let i = currentYear; i >= currentYear - 100; i--) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = i;
+        yearSelect.appendChild(option);
+      }
+    });
+  </script>
+</body>
+</html>

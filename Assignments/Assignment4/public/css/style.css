@@ -1,0 +1,855 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Top Bar */
+.top-bar {
+    background: #333;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+/* Main Navigation */
+.main-nav {
+    display: flex;
+    align-items: center;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 20px;
+    padding: 5px 10px;
+}
+
+.main-nav .active {
+    text-decoration: underline;
+}
+
+/* Search Container */
+.search-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.search-container input {
+    width: 100%;
+    max-width: 700px;
+    padding: 8px;
+    border: none;
+    border-radius: 20px;
+}
+
+.search-container button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: -30px;
+}
+
+/* Icons */
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 22px;
+}
+
+.icon-btn {
+    cursor: pointer;
+    padding: 8px;
+}
+
+/* User Dropdown */
+.user-dropdown .dropdown-menu {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    width: 220px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    display: none;
+    z-index: 99;
+    padding: 12px;
+    border-radius: 5px;
+}
+
+.auth-links {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.auth-links a {
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul li a {
+    display: block;
+    padding: 8px;
+    color: #333;
+    text-decoration: none;
+}
+
+ul li a:hover {
+    background-color: #f2f2f2;
+}
+
+.close-btn {
+    text-align: right;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    color: #888;
+}
+
+/* Sub Navigation */
+.sub-nav {
+    background: #555;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.sub-nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0 15px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+}
+
+.sub-nav .dropdown-toggle {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+.sub-nav .dropdown-toggle:hover {
+    color: #ccc;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.sub-nav .dropdown-menu {
+    background-color: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 20px;
+    width: 800px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    justify-content: space-between;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: flex;
+}
+
+.dropdown-column {
+    flex: 1;
+    padding: 0 15px;
+}
+
+.dropdown-column h6 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #2d2d2d;
+    text-transform: uppercase;
+}
+
+.dropdown-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.dropdown-column li {
+    margin-bottom: 10px;
+}
+
+.dropdown-column a {
+    color: #2d2d2d;
+    font-size: 14px;
+    text-decoration: none;
+    text-transform: none;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-column a:hover {
+    color: #666;
+}
+
+.circle-img {
+    width: 40px;
+    height: 40px;
+    background-color: #e5e5e5;
+    border-radius: 50%;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.dropdown-column.right {
+    border-left: 1px solid #e5e5e5;
+    padding-left: 20px;
+}
+
+.right h6 {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.right img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Promo Bar */
+.promo-bar {
+    background: black;
+    color: white;
+    text-align: center;
+    height: 80px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.promo-bar p {
+    margin: 0;
+    cursor: pointer;
+}
+
+.promo-bar button {
+    padding: 8px 20px;
+    border: 2px solid white;
+    background: black;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.left-button {
+    margin-left: 20px;
+}
+
+.right-button {
+    margin-right: 20px;
+}
+
+/* Topshop Banner */
+.topshop-banner {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.topshop-banner video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.topshop-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    font-size: 60px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.discover-link {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    border-bottom: 2px solid white;
+    padding-bottom: 3px;
+    cursor: pointer;
+}
+
+/* Carousel */
+.carousel-item img {
+    max-height: 800px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.carousel-indicators {
+    position: relative;
+    margin-top: 10px;
+}
+
+.carousel-indicators [data-bs-target] {
+    background-color: black;
+    width: 8px;
+    height: 8px;
+    border-radius: 70%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1);
+}
+
+.caption {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 250%;
+    font-weight: 50;
+    cursor: pointer;
+}
+
+.card img {
+    height: 500px;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.price s {
+    color: gray;
+}
+
+.price strong {
+    color: red;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-control-prev {
+    left: -6%;
+}
+
+.carousel-control-next {
+    right: -6%;
+}
+
+/* Slider Containers */
+.slider-container {
+    width: 100vw;
+    margin: 40px 0;
+    overflow: hidden;
+    text-align: center;
+}
+
+.image-slide {
+    width: 100%;
+    height: auto;
+    display: block;
+    cursor: pointer;
+}
+
+/* Footer */
+.footer {
+    background-color: #f8f8f8;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-container {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.social-icons,
+.payment-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icons img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+
+.payment-icons img {
+    width: 50px;
+    height: auto;
+}
+
+.footer-middle {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.footer-column {
+    width: 22%;
+    min-width: 200px;
+}
+
+.footer-column h3 {
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 6px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: #666;
+    font-size: 12px;
+}
+
+.footer-column ul li a:hover {
+    color: #000;
+}
+
+.country-flag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.country-flag img {
+    width: 24px;
+    height: 16px;
+    object-fit: cover;
+}
+
+.flag-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.flag-icons img {
+    width: 18px;
+    height: 12px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.flag-icons img:hover {
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+    font-size: 12px;
+    color: #666;
+    flex-wrap: wrap;
+}
+
+.footer-links {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #333;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries */
+
+/* Extra Small Screens (Phones Portrait) */
+@media (max-width: 575px) {
+    body {
+        font-size: 14px;
+    }
+
+    .top-bar {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .search-container input {
+        width: 80%;
+    }
+
+    .search-container button {
+        margin-left: -20px;
+    }
+
+    .main-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sub-nav {
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+    .sub-nav a {
+        display: block;
+        padding: 8px;
+    }
+
+    .sub-nav .dropdown-menu {
+        width: 100%;
+        left: 0;
+        transform: none;
+    }
+
+    .topshop-text {
+        font-size: 30px;
+    }
+
+    .discover-link {
+        font-size: 12px;
+    }
+
+    .promo-bar {
+        flex-direction: column;
+    }
+
+    .carousel {
+        max-width: 100%;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        display: none;
+    }
+
+    .carousel-indicators {
+        bottom: -10px;
+    }
+
+    .caption {
+        font-size: 150%;
+        margin-top: 20px;
+    }
+
+    .footer-container {
+        width: 100%;
+    }
+
+    .footer-column {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* Small Devices (Phones Landscape) */
+@media (min-width: 576px) and (max-width: 767px) {
+    .top-bar {
+        padding: 8px;
+    }
+
+    .search-container input {
+        max-width: 80%;
+    }
+
+    .topshop-text {
+        font-size: 30px;
+    }
+
+    .promo-bar {
+        flex-direction: column;
+    }
+
+    .sub-nav a {
+        padding: 0 15px;
+    }
+
+    .sub-nav .dropdown-menu {
+        width: 100%;
+        left: 0;
+        transform: none;
+    }
+
+    .topshop-banner video {
+        height: 100%;
+    }
+}
+
+/* Medium Devices (Tablets) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .top-bar {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+    }
+
+    .main-nav {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .main-nav a {
+        margin: 5px;
+    }
+
+    .search-container input {
+        max-width: 500px;
+    }
+
+    .search-container button {
+        margin-left: -25px;
+    }
+
+    .icons {
+        margin-top: 10px;
+    }
+
+    .sub-nav {
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+    .sub-nav a {
+        padding: 8px;
+    }
+
+    .sub-nav .dropdown-menu {
+        width: 100%;
+        left: 0;
+        transform: none;
+    }
+
+    .topshop-text {
+        font-size: 40px;
+    }
+
+    .discover-link {
+        font-size: 14px;
+    }
+
+    .carousel-item .row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .col-md-4 {
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 35px;
+        height: 35px;
+    }
+
+    .carousel-control-prev {
+        left: -30px;
+    }
+
+    .carousel-control-next {
+        right: -30px;
+    }
+
+    .carousel-indicators {
+        bottom: -20px;
+    }
+
+    .caption {
+        font-size: 180%;
+        margin-top: 30px;
+    }
+
+    .footer-column {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Large Devices (Laptops) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .search-container input {
+        max-width: 600px;
+    }
+
+    .topshop-text {
+        font-size: 50px;
+    }
+
+    .promo-bar {
+        flex-direction: row;
+    }
+
+    .topshop-banner video {
+        height: 100%;
+    }
+}
+
+/* Extra Large Screens */
+@media (min-width: 1200px) {
+    .topshop-text {
+        font-size: 60px;
+    }
+
+    .promo-bar {
+        flex-direction: row;
+    }
+
+    .topshop-banner video {
+        height: 100%;
+    }
+}
+
+/* Navbar Toggle for Smaller Screens */
+@media (max-width: 992px) {
+    .sub-nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: white;
+        width: 100%;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .sub-nav.active {
+        display: flex;
+    }
+
+    .menu-icon {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .search-container input {
+        max-width: 400px;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 40px;
+        height: 40px;
+    }
+
+    .carousel-control-prev {
+        left: -40px;
+    }
+
+    .carousel-control-next {
+        right: -40px;
+    }
+
+    .carousel-indicators {
+        bottom: -25px;
+    }
+}
