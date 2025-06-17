@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-  email: { type: String, required: true, unique: true }
-  // You can add more fields later when needed
+  firstname: String,
+  email: String,
+  password: String,
+  isAdmin: { type: Boolean, default: false }
 });
 
-const User = mongoose.models.User || mongoose.model("User", userSchema);
-module.exports = User;
+module.exports = mongoose.model("User", userSchema);

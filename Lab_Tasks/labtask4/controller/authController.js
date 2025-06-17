@@ -1,11 +1,9 @@
 const User = require("../models/User");
 
-// Render signup form
 exports.renderSignup = (req, res) => {
   res.render("signup");
 };
 
-// Handle signup logic
 exports.signup = async (req, res) => {
   const { name, email, password } = req.body;
   try {
@@ -19,12 +17,10 @@ exports.signup = async (req, res) => {
   }
 };
 
-// Render login form
 exports.renderLogin = (req, res) => {
   res.render("login");
 };
 
-// Handle login logic
 exports.login = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email, password });
@@ -38,7 +34,6 @@ exports.login = async (req, res) => {
   }
 };
 
-// Render dashboard after login
 exports.dashboard = (req, res) => {
   if (!req.session.user) {
     req.flash("error", "You must log in first.");
@@ -47,7 +42,7 @@ exports.dashboard = (req, res) => {
   res.render("dashboard", { user: req.session.user });
 };
 
-// Handle logout
+
 exports.logout = (req, res) => {
   req.session.destroy();
   res.redirect("/login");

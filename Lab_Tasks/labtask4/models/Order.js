@@ -1,20 +1,18 @@
-// models/Order.js
 const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema({
+  products: [
+    {
+      productId: { type: mongoose.Schema.Types.ObjectId, ref: "Product" }, // ✅ FIXED HERE
+      quantity: { type: Number, default: 1 },
+    },
+  ],
+  totalPrice: { type: Number, default: 0 },
   customer: {
     name: String,
     email: String,
     address: String,
   },
-  products: [
-    {
-      productId: { type: mongoose.Schema.Types.ObjectId, ref: "product" },
-      quantity: Number,
-    },
-  ],
-  totalPrice: Number,
-  status: { type: String, default: "Pending" },
   createdAt: { type: Date, default: Date.now },
 });
 

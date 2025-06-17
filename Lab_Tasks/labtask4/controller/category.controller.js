@@ -1,6 +1,6 @@
 const Category = require("../models/category.model");
 
-// Show all categories
+
 exports.showCategories = async (req, res) => {
   try {
     const categories = await Category.find();
@@ -12,12 +12,11 @@ exports.showCategories = async (req, res) => {
   }
 };
 
-// Show create category form
 exports.showCreateForm = (req, res) => {
   res.render("admin/create-category");
 };
 
-// Create category
+
 exports.createCategory = async (req, res) => {
   try {
     const { name, description } = req.body;
@@ -32,7 +31,7 @@ exports.createCategory = async (req, res) => {
   }
 };
 
-// Show edit form
+
 exports.showEditForm = async (req, res) => {
   try {
     const category = await Category.findById(req.params.id);
@@ -48,7 +47,7 @@ exports.showEditForm = async (req, res) => {
   }
 };
 
-// Update category
+
 exports.updateCategory = async (req, res) => {
   try {
     const { name, description } = req.body;
@@ -62,7 +61,6 @@ exports.updateCategory = async (req, res) => {
   }
 };
 
-// Delete category
 exports.deleteCategory = async (req, res) => {
   try {
     await Category.findByIdAndDelete(req.params.id);

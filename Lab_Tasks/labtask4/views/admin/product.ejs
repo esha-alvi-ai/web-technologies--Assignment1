@@ -79,13 +79,14 @@
             <% } %>
           </td>
           <td class="d-flex gap-2">
-            <a href="/admin/product?editId=<%= p._id %>" class="btn btn-warning btn-sm mr-2">Edit</a>
+            <a href="/admin/product/edit/<%= p._id %>" class="btn btn-warning btn-sm">Edit</a>
+
             <form action="/admin/product/delete/<%= p._id %>" method="POST" style="display:inline;">
               <button type="submit" class="btn btn-danger btn-sm">Delete</button>
             </form>
-            <form action="/admin/cart/add/<%= p._id %>" method="POST" style="display:inline;">
-              <button type="submit" class="btn btn-success btn-sm ml-2">Add to Cart</button>
-            </form>
+
+            <a href="/cart/add/<%= p._id %>" class="btn btn-success btn-sm">Add to Cart</a>
+
           </td>
         </tr>
       <% }) %>

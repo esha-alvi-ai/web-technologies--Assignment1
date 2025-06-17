@@ -13,7 +13,8 @@ const isAdmin = require("./middleware/admin");
 const productController = require("./controller/product.controller");
 const categoryController = require("./controller/category.controller");
 const orderController = require("./controller/order.controller");
-const cartController = require("./controller/cartcontroller");
+// Use lowercase 'cartController' if needed, or remove if unused
+// const cartController = require("./controller/cartcontroller");
 
 // Models
 const User = require("./models/User");
@@ -54,27 +55,35 @@ app.use((req, res, next) => {
   next();
 });
 
-// 🔧 Multer Setup
+// 🔧 Multer Setup for file uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, "public/uploads/"),
   filename: (req, file, cb) => cb(null, Date.now() + "-" + file.originalname),
 });
 const upload = multer({ storage });
 
-// ✅ Public Routes
+// ==================
+// Public Routes
+// ==================
 app.get("/", (req, res) => res.render("landingpage"));
 
 app.get("/signup", (req, res) => res.render("admin/signup"));
 app.post("/signup", async (req, res) => {
   const { firstname, email, password } = req.body;
-  const existing = await User.findOne({ email });
-  if (existing) {
-    req.flash("error", "Email already exists.");
-    return res.redirect("/signup");
+  try {
+    const existing = await User.findOne({ email });
+    if (existing) {
+      req.flash("error", "Email already exists.");
+      return res.redirect("/signup");
+    }
+    await new User({ firstname, email, password }).save();
+    req.flash("success", "Signup successful! Now log in.");
+    res.redirect("/login");
+  } catch (error) {
+    console.error(error);
+    req.flash("error", "Something went wrong during signup.");
+    res.redirect("/signup");
   }
-  await new User({ firstname, email, password }).save();
-  req.flash("success", "Signup successful! Now log in.");
-  res.redirect("/login");
 });
 
 app.get("/login", (req, res) =>
@@ -83,29 +92,36 @@ app.get("/login", (req, res) =>
 
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
-  const user = await User.findOne({ email });
-  if (!user || user.password !== password) {
-    req.flash("error", "Invalid email or password.");
-    return res.redirect("/login");
+  try {
+    const user = await User.findOne({ email });
+    if (!user || user.password !== password) {
+      req.flash("error", "Invalid email or password.");
+      return res.redirect("/login");
+    }
+    req.session.user = user;
+    req.flash("success", "Login successful!");
+    res.redirect("/dashboard");
+  } catch (error) {
+    console.error(error);
+    req.flash("error", "Something went wrong during login.");
+    res.redirect("/login");
   }
-  req.session.user = user;
-  req.flash("success", "Login successful!");
-  res.redirect("/dashboard");
 });
 
 app.get("/logout", (req, res) => {
   req.session.destroy(() => res.redirect("/"));
 });
 
-// ✅ User Dashboard
+// ==================
+// User Dashboard and Orders
+// ==================
 app.get("/dashboard", authorize, (req, res) =>
   res.render("admin/dashboard", { user: req.session.user })
 );
 
 app.get("/my-orders", authorize, async (req, res) => {
   try {
-    const orders = await Order.find({ "customer.email": req.session.user.email })
-      .populate("products.productId");
+    const orders = await Order.find({ "customer.email": req.session.user.email }).populate("items.productId");
     res.render("my-orders", { orders });
   } catch (err) {
     console.error("❌ Error fetching orders:", err);
@@ -114,7 +130,10 @@ app.get("/my-orders", authorize, async (req, res) => {
   }
 });
 
-// ✅ Admin Routes
+// ==================
+// Admin Routes
+// ==================
+
 // Product CRUD
 app.get("/admin/product", authorize, isAdmin, productController.showProducts);
 app.post("/admin/product", authorize, isAdmin, upload.single("image"), productController.createProduct);
@@ -138,15 +157,17 @@ app.get("/admin/order/:id", authorize, isAdmin, orderController.viewOrder);
 app.post("/admin/order/update/:id", authorize, isAdmin, orderController.updateOrder);
 app.post("/admin/order/delete/:id", authorize, isAdmin, orderController.deleteOrder);
 
-// Cart Routes
+// Cart Routes (mounted under /admin)
 app.use("/admin", cartRoutes);
 
-// Admin Redirect Shortcut
+// Admin Home Redirect Shortcut
 app.get("/admin/home", authorize, isAdmin, (req, res) =>
   res.redirect("/admin/product")
 );
 
-// ✅ Start Server
+// ==================
+// Start Server
+// ==================
 const PORT = 3003;
 app.listen(PORT, () => {
   console.log(`✅ Server running at http://localhost:${PORT}`);

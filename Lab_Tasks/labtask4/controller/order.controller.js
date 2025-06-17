@@ -1,12 +1,12 @@
 const Order = require("../models/Order");
-
+const Product = require("../models/product.model");
 // Show all orders
 exports.viewAllOrders = async (req, res) => {
   const orders = await Order.find().populate("products.productId");
   res.render("admin/order", { orders });
 };
 
-// Show order detail
+// Show single order detail
 exports.viewOrder = async (req, res) => {
   const order = await Order.findById(req.params.id).populate("products.productId");
   if (!order) {
@@ -16,19 +16,19 @@ exports.viewOrder = async (req, res) => {
   res.render("admin/order-detail", { order });
 };
 
-// Show create form (Optional)
+// Show create order form (admin only)
 exports.showCreateForm = (req, res) => {
   res.render("admin/create-order");
 };
 
-// Create order
+// Create order (admin)
 exports.createOrder = async (req, res) => {
   try {
     const { name, email, address, products, totalPrice } = req.body;
 
     const order = new Order({
       customer: { name, email, address },
-      products, // Make sure this is an array of { productId, quantity }
+      products, // Should be array of { productId, quantity }
       totalPrice,
     });
 
@@ -42,7 +42,7 @@ exports.createOrder = async (req, res) => {
   }
 };
 
-// Update order
+// Update order (admin)
 exports.updateOrder = async (req, res) => {
   try {
     await Order.findByIdAndUpdate(req.params.id, req.body);
@@ -55,7 +55,7 @@ exports.updateOrder = async (req, res) => {
   }
 };
 
-// Delete order
+// Delete order (admin)
 exports.deleteOrder = async (req, res) => {
   try {
     await Order.findByIdAndDelete(req.params.id);

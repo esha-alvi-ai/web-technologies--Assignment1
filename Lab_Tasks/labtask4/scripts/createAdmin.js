@@ -16,7 +16,7 @@ const createAdmin = async () => {
     } else {
       await User.create({
         email: "admin@example.com",
-        password: "admin123", // use bcrypt if needed
+        password: "admin123456789", // use bcrypt if needed
         isAdmin: true,
       });
       console.log("✅ Admin created!");

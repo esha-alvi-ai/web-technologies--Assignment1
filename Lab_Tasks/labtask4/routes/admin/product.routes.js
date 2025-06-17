@@ -6,7 +6,6 @@ const authorize = require("../../middleware/authorize");
 const isAdmin = require("../../middleware/admin");
 const upload = require("../../middleware/upload");
 
-// Redirect root to product list
 router.get("/", (req, res) => res.redirect("/admin/product/list"));
 
 // Product List
@@ -76,7 +75,7 @@ router.post("/create", authorize, isAdmin, upload.single("picture"), async (req,
   }
 });
 
-// Edit Product
+
 router.get("/edit/:id", authorize, isAdmin, async (req, res) => {
   try {
     const product = await Product.findById(req.params.id).populate("category");
@@ -109,7 +108,7 @@ router.post("/edit/:id", authorize, isAdmin, upload.single("picture"), async (re
   }
 });
 
-// Delete Product
+
 router.get("/delete/:id", authorize, isAdmin, async (req, res) => {
   try {
     await Product.findByIdAndDelete(req.params.id);

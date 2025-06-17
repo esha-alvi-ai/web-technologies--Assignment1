@@ -2,12 +2,12 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 
-// Render Signup Page
+
 router.get("/signup", (req, res) => {
   res.render("auth/signup");
 });
 
-// Handle Signup
+
 router.post("/signup", async (req, res) => {
   const { firstname, email, password } = req.body;
   const user = new User({ firstname, email, password });
@@ -16,12 +16,11 @@ router.post("/signup", async (req, res) => {
   res.redirect("/login");
 });
 
-// Render Login Page
 router.get("/login", (req, res) => {
   res.render("auth/login");
 });
 
-// Handle Login
+
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -32,7 +31,6 @@ router.post("/login", async (req, res) => {
     return res.redirect("/login");
   }
 
-  // Store session
   req.session.user = {
     _id: user._id,
     email: user.email,
@@ -46,12 +44,12 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// Dashboard (optional)
+
 router.get("/dashboard", (req, res) => {
   res.render("dashboard", { user: req.session.user });
 });
 
-// Logout
+
 router.get("/logout", (req, res) => {
   req.session.destroy(() => {
     res.redirect("/login");
