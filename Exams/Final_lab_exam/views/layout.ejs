@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASOS Navigation Bar</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/carousel-script.js"></script>
+                    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+   
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="logo">asos</div>
+            <nav class="main-nav">
+                <a href="#" class="active">WOMEN</a>
+                <a href="#">MEN</a>
+            </nav>
+            <div class="search-container">
+                <input type="text" placeholder="Search for items and brands">
+                <button>🔍</button>
+            </div>
+           <div class="icons nav-right">
+  
+<div class="user-dropdown">
+  <span class="icon-btn" id="userIcon">👤</span>
+  <div class="dropdown-menu" id="dropdownMenu">
+    
+    <% if (!user) { %>
+      <div class="auth-links">
+        <a href="/signup">Sign In</a> | <a href="/login">Join</a>
+      </div>
+    <% } else { %>
+      <ul>
+        <li><a href="#">👤 My Account</a></li>
+        <li><a href="#">📦 My Orders</a></li>
+        <li><a href="#">↩️ Returns Information</a></li>
+
+        <!-- Contact & Complaint Features -->
+        <li><a href="/complaints">📩 Contact Us / Submit Complaint</a></li>
+        <li><a href="/complaints/mine">📋 My Complaints</a></li>
+
+        <% if (user.role === 'admin') { %>
+          <li><a href="/complaints/admin">🛠️ All Complaints (Admin)</a></li>
+        <% } %>
+      </ul>
+    <% } %>
+
+    <div class="close-btn" id="closeDropdown">✖</div>
+  </div>
+</div> 
+
+  <span class="icon-btn">🤍</span>
+
+  
+  <span class="icon-btn">🛍️</span>
+</div>
+
+        </div>
+
+        <div class="sub-nav">
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">New in</a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-column">
+                        <h6>New Products</h6>
+                        <ul>
+                            <li><a href="#">View all</a></li>
+                            <li><a href="#">Clothing</a></li>
+                            <li><a href="#">Shoes</a></li>
+                        </ul>
+                        <h6>New In: Today</h6>
+                        <ul>
+                            <li><a href="#">New In: Selling Fast</a></li>
+                            <li><a href="#">Frankie's Bikini x Bella Hadid</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column">
+                        <h6>Summer</h6>
+                        <ul>
+                            <li><a href="#"><span class="circle-img"></span>Summer Essentials</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Sundresses</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Summertime Prep</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Soft Pastels</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Light Jackets</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column">
+                        <h6>Your Most Hyped</h6>
+                        <ul>
+                            <li><a href="#">View All</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Dresses</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Tops</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Knits & Sweats</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Jeans & Trousers</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Collections</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column right">
+                        <h6>New Edits</h6>
+                        <img src="https://via.placeholder.com/200x150" alt="Trending Colour">
+                        <a href="#">Trending Colour</a>
+                        <img src="https://via.placeholder.com/200x150" alt="The Night Out Edit">
+                        <a href="#">The Night Out Edit</a>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Clothing</a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-column">
+                        <h6>Shop by Category</h6>
+                        <ul>
+                            <li><a href="#">View all</a></li>
+                            <li><a href="#">Tops</a></li>
+                            <li><a href="#">Jeans</a></li>
+                        </ul>
+                        <h6>Seasonal Picks</h6>
+                        <ul>
+                            <li><a href="#">Winter Layers</a></li>
+                            <li><a href="#">Summer Basics</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column">
+                        <h6>Outerwear</h6>
+                        <ul>
+                            <li><a href="#"><span class="circle-img"></span>Coats</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Jackets</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Blazers</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Gilets</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Trench Coats</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column">
+                        <h6>Top Picks</h6>
+                        <ul>
+                            <li><a href="#">View All</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Sweatshirts</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Cardigans</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Shirts</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Leggings</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Skirts</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column right">
+                        <h6>Featured Looks</h6>
+                        <img src="https://via.placeholder.com/200x150" alt="Winter Coats">
+                        <a href="#">Winter Coats</a>
+                        <img src="https://via.placeholder.com/200x150" alt="Denim Days">
+                        <a href="#">Denim Days</a>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Trending</a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-column">
+                        <h6>What's Hot</h6>
+                        <ul>
+                            <li><a href="#">View all</a></li>
+                            <li><a href="#">Streetwear</a></li>
+                            <li><a href="#">Athleisure</a></li>
+                        </ul>
+                        <h6>Trending Now</h6>
+                        <ul>
+                            <li><a href="#">Bold Prints</a></li>
+                            <li><a href="#">Metallic Finishes</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column">
+                        <h6>Seasonal Trends</h6>
+                        <ul>
+                            <li><a href="#"><span class="circle-img"></span>Velvet Vibes</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Chunky Knits</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Leather Looks</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Sheer Fabrics</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Bohemian Styles</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column">
+                        <h6>Trending Styles</h6>
+                        <ul>
+                            <li><a href="#">View All</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Oversized Blazers</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Midi Skirts</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Flare Jeans</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Cropped Tops</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Utility Wear</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column right">
+                        <h6>Hot Trends</h6>
+                        <img src="https://via.placeholder.com/200x150" alt="Streetwear Edit">
+                        <a href="#">Streetwear Edit</a>
+                        <img src="https://via.placeholder.com/200x150" alt="Metallic Moments">
+                        <a href="#">Metallic Moments</a>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Dresses</a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-column">
+                        <h6>Dress Types</h6>
+                        <ul>
+                            <li><a href="#">View all</a></li>
+                            <li><a href="#">Midi Dresses</a></li>
+                            <li><a href="#">Maxi Dresses</a></li>
+                        </ul>
+                        <h6>Occasion Dresses</h6>
+                        <ul>
+                            <li><a href="#">Party Dresses</a></li>
+                            <li><a href="#">Wedding Guest</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column">
+                        <h6>Styles</h6>
+                        <ul>
+                            <li><a href="#"><span class="circle-img"></span>Slip Dresses</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Wrap Dresses</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Shirt Dresses</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Knit Dresses</a></li>
+                            <li><a href="#"><span class="circle-img"></span>A-Line Dresses</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column">
+                        <h6>Popular Picks</h6>
+                        <ul>
+                            <li><a href="#">View All</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Floral Dresses</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Satin Dresses</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Bodycon Dresses</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Off-Shoulder</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Casual Dresses</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column right">
+                        <h6>Dress Edits</h6>
+                        <img src="https://via.placeholder.com/200x150" alt="Party Dresses">
+                        <a href="#">Party Dresses</a>
+                        <img src="https://via.placeholder.com/200x150" alt="Summer Dresses">
+                        <a href="#">Summer Dresses</a>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Shoes</a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-column">
+                        <h6>Shop by Type</h6>
+                        <ul>
+                            <li><a href="#">View all</a></li>
+                            <li><a href="#">Heels</a></li>
+                            <li><a href="#">Boots</a></li>
+                        </ul>
+                        <h6>Seasonal Styles</h6>
+                        <ul>
+                            <li><a href="#">Winter Boots</a></li>
+                            <li><a href="#">Summer Sandals</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column">
+                        <h6>Categories</h6>
+                        <ul>
+                            <li><a href="#"><span class="circle-img"></span>Sneakers</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Flats</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Ankle Boots</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Pumps</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Loafers</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column">
+                        <h6>Top Picks</h6>
+                        <ul>
+                            <li><a href="#">View All</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Platform Heels</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Combat Boots</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Espadrilles</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Slippers</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Running Shoes</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column right">
+                        <h6>Shoe Trends</h6>
+                        <img src="https://via.placeholder.com/200x150" alt="Boot Season">
+                        <a href="#">Boot Season</a>
+                        <img src="https://via.placeholder.com/200x150" alt="Heel Highlights">
+                        <a href="#">Heel Highlights</a>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Face + Body</a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-column">
+                        <h6>Skincare</h6>
+                        <ul>
+                            <li><a href="#">View all</a></li>
+                            <li><a href="#">Moisturizers</a></li>
+                            <li><a href="#">Cleansers</a></li>
+                        </ul>
+                        <h6>Body Care</h6>
+                        <ul>
+                            <li><a href="#">Body Lotions</a></li>
+                            <li><a href="#">Bath & Shower</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column">
+                        <h6>Makeup</h6>
+                        <ul>
+                            <li><a href="#"><span class="circle-img"></span>Foundation</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Lipstick</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Eyeshadow</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Mascara</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Blush</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column">
+                        <h6>Top Products</h6>
+                        <ul>
+                            <li><a href="#">View All</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Serums</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Face Masks</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Perfumes</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Body Scrubs</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Sunscreen</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column right">
+                        <h6>Beauty Picks</h6>
+                        <img src="https://via.placeholder.com/200x150" alt="Skincare Must-Haves">
+                        <a href="#">Skincare Must-Haves</a>
+                        <img src="https://via.placeholder.com/200x150" alt="Makeup Trends">
+                        <a href="#">Makeup Trends</a>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Accessories</a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-column">
+                        <h6>Shop by Type</h6>
+                        <ul>
+                            <li><a href="#">View all</a></li>
+                            <li><a href="#">Jewelry</a></li>
+                            <li><a href="#">Bags</a></li>
+                        </ul>
+                        <h6>Seasonal Accessories</h6>
+                        <ul>
+                            <li><a href="#">Winter Scarves</a></li>
+                            <li><a href="#">Summer Hats</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column">
+                        <h6>Categories</h6>
+                        <ul>
+                            <li><a href="#"><span class="circle-img"></span>Sunglasses</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Belts</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Hats</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Scarves</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Wallets</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column">
+                        <h6>Top Picks</h6>
+                        <ul>
+                            <li><a href="#">View All</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Necklaces</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Earrings</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Backpacks</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Gloves</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Watches</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column right">
+                        <h6>Accessory Trends</h6>
+                        <img src="https://via.placeholder.com/200x150" alt="Statement Jewelry">
+                        <a href="#">Statement Jewelry</a>
+                        <img src="https://via.placeholder.com/200x150" alt="Bag Essentials">
+                        <a href="#">Bag Essentials</a>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Wedding</a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-column">
+                        <h6>Wedding Shop</h6>
+                        <ul>
+                            <li><a href="#">View all</a></li>
+                            <li><a href="#">Bridal Dresses</a></li>
+                            <li><a href="#">Groom Suits</a></li>
+                        </ul>
+                        <h6>Wedding Guests</h6>
+                        <ul>
+                            <li><a href="#">Guest Dresses</a></li>
+                            <li><a href="#">Accessories</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column">
+                        <h6>Bridal Styles</h6>
+                        <ul>
+                            <li><a href="#"><span class="circle-img"></span>Lace Dresses</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Satin Gowns</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Bohemian</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Minimalist</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Vintage</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column">
+                        <h6>Wedding Essentials</h6>
+                        <ul>
+                            <li><a href="#">View All</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Veils</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Shoes</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Jewelry</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Ties</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Bridesmaid Dresses</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column right">
+                        <h6>Wedding Looks</h6>
+                        <img src="https://via.placeholder.com/200x150" alt="Bridal Elegance">
+                        <a href="#">Bridal Elegance</a>
+                        <img src="https://via.placeholder.com/200x150" alt="Guest Styles">
+                        <a href="#">Guest Styles</a>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Brands</a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-column">
+                        <h6>Top Brands</h6>
+                        <ul>
+                            <li><a href="#">View all</a></li>
+                            <li><a href="#">Topshop</a></li>
+                            <li><a href="#">ASOS Design</a></li>
+                        </ul>
+                        <h6>New Arrivals</h6>
+                        <ul>
+                            <li><a href="#">Nike</a></li>
+                            <li><a href="#">Adidas</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column">
+                        <h6>Designer Brands</h6>
+                        <ul>
+                            <li><a href="#"><span class="circle-img"></span>Gucci</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Prada</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Balenciaga</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Versace</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Chanel</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column">
+                        <h6>Popular Brands</h6>
+                        <ul>
+                            <li><a href="#">View All</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Zara</a></li>
+                            <li><a href="#"><span class="circle-img"></span>H&M</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Mango</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Levi's</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Dr. Martens</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column right">
+                        <h6>Brand Highlights</h6>
+                        <img src="https://via.placeholder.com/200x150" alt="Topshop Trends">
+                        <a href="#">Topshop Trends</a>
+                        <img src="https://via.placeholder.com/200x150" alt="Designer Picks">
+                        <a href="#">Designer Picks</a>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Activewear</a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-column">
+                        <h6>Shop by Activity</h6>
+                        <ul>
+                            <li><a href="#">View all</a></li>
+                            <li><a href="#">Running</a></li>
+                            <li><a href="#">Yoga</a></li>
+                        </ul>
+                        <h6>Activewear Types</h6>
+                        <ul>
+                            <li><a href="#">Gym Wear</a></li>
+                            <li><a href="#">Outdoor</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column">
+                        <h6>Categories</h6>
+                        <ul>
+                            <li><a href="#"><span class="circle-img"></span>Leggings</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Sports Bras</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Shorts</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Tracksuits</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Running Shoes</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column">
+                        <h6>Top Picks</h6>
+                        <ul>
+                            <li><a href="#">View All</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Performance Tops</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Hoodies</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Compression Wear</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Swimwear</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Accessories</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column right">
+                        <h6>Activewear Trends</h6>
+                        <img src="https://via.placeholder.com/200x150" alt="Running Essentials">
+                        <a href="#">Running Essentials</a>
+                        <img src="https://via.placeholder.com/200x150" alt="Yoga Styles">
+                        <a href="#">Yoga Styles</a>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Topshop</a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-column">
+                        <h6>Topshop Picks</h6>
+                        <ul>
+                            <li><a href="#">View all</a></li>
+                            <li><a href="#">Dresses</a></li>
+                            <li><a href="#">Jeans</a></li>
+                        </ul>
+                        <h6>New Arrivals</h6>
+                        <ul>
+                            <li><a href="#">Topshop Coats</a></li>
+                            <li><a href="#">Topshop Shoes</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column">
+                        <h6>Clothing</h6>
+                        <ul>
+                            <li><a href="#"><span class="circle-img"></span>Tops</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Skirts</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Jackets</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Knitwear</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Trousers</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column">
+                        <h6>Top Collections</h6>
+                        <ul>
+                            <li><a href="#">View All</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Petite</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Tall</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Curve</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Maternity</a></li>
+                            <li><a href="#"><span class="circle-img"></span>Accessories</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column right">
+                        <h6>Topshop Highlights</h6>
+                        <img src="https://via.placeholder.com/200x150" alt="Denim Collection">
+                        <a href="#">Denim Collection</a>
+                        <img src="https://via.placeholder.com/200x150" alt="Party Looks">
+                        <a href="#">Party Looks</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="promo-bar">
+            <button class="left-button">MEN</button>
+            <p>THE UP-TO-30%-OFF EDIT</p>
+            <button class="right-button">WOMEN</button>
+        </div>
+    </header>
+
+    
+
+   <%- body %>
+
+<footer class="footer">
+    <div class="footer-container">
+        
+        <div class="footer-top">
+            <div class="social-icons">
+                <a href="#"><img src="webpicslandingpage/fb.jpg" alt="Facebook"></a>
+                <a href="#"><img src="webpicslandingpage/in.png" alt="Instagram"></a>
+                <a href="#"><img src="webpicslandingpage/sn.jpg" alt="Snapchat"></a>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="payment-icons">
+                <img src="webpicslandingpage/visa.png" alt="Visa">
+                <img src="webpicslandingpage/master.png" alt="MasterCard">
+                <img src="webpicslandingpage/pp.png" alt="PayPal">
+                <img src="webpicslandingpage/ae.png" alt="American Express">
+            </div>
+        </div>
+
+        
+        <div class="footer-middle">
+            <div class="footer-column">
+                <h3>HELP & INFORMATION</h3>
+                <ul>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Track order</a></li>
+                    <li><a href="#">Delivery & returns</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>ABOUT ASOS</h3>
+                <ul>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Careers at ASOS</a></li>
+                    <li><a href="#">Corporate responsibility</a></li>
+                    <li><a href="#">Investors' site</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>MORE FROM ASOS</h3>
+                <ul>
+                    <li><a href="#">Mobile and ASOS apps</a></li>
+                    <li><a href="#">Gift vouchers</a></li>
+                    <li><a href="#">Black Friday</a></li>
+                    <li><a href="#">ASOS x Thrift+</a></li>
+                    <li><a href="#">Discover the ASOS Credit Card</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>SHOPPING FROM:</h3>
+                <p class="country-flag">
+                    <img src="webpicslandingpage/pak.jpg" alt="Pakistan Flag">
+                    <strong>Pakistan</strong>
+                </p>
+
+                <p>Some of our international sites:</p>
+                <div class="flag-icons">
+                    <img src="webpicslandingpage/es.png" alt="Spain">
+                    <img src="webpicslandingpage/de.jpg" alt="Germany">
+                    <img src="webpicslandingpage/gb.jpg" alt="UK">
+                    <img src="webpicslandingpage/fr.jpg" alt="France">
+                    <img src="webpicslandingpage/us.jpg" alt="USA">
+                    <img src="webpicslandingpage/dk.png" alt="Denmark">
+                    <img src="webpicslandingpage/it.jpg" alt="Italy">
+                    <img src="webpicslandingpage/nl.jpg" alt="Netherlands">
+                    <img src="webpicslandingpage/pli.jpg" alt="Poland">
+                    <img src="webpicslandingpage/se.png" alt="Sweden">
+                </div>
+            </div>
+        </div>
+
+    
+        <div class="footer-bottom">
+            <div class="copyright">© 2025 ASOS</div>
+            <div class="footer-links">
+                <a href="#">Privacy & Cookies</a>
+                <a href="#">Ts&Cs</a>
+                <a href="#">Accessibility</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

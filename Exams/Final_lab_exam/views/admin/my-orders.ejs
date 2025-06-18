@@ -1,0 +1,20 @@
+<h2>My Orders</h2>
+<% if (orders.length > 0) { %>
+  <ul>
+    <% orders.forEach(order => { %>
+      <li>
+        <strong>Order ID:</strong> <%= order._id %><br/>
+        <strong>Total Price:</strong> <%= order.totalPrice %><br/>
+        <strong>Items:</strong>
+        <ul>
+          <% order.products.forEach(p => { %>
+            <li><%= p.productId.title %> x <%= p.quantity %></li>
+          <% }) %>
+        </ul>
+        <hr/>
+      </li>
+    <% }) %>
+  </ul>
+<% } else { %>
+  <p>You haven't placed any orders yet.</p>
+<% } %>

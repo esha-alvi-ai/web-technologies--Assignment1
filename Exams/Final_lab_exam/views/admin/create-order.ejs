@@ -1,0 +1,22 @@
+<h1>Create Order</h1>
+<form action="/admin/order/create" method="POST">
+  <label>Name:</label>
+  <input type="text" name="name" required /><br/>
+  
+  <label>Email:</label>
+  <input type="email" name="email" required /><br/>
+
+  <label>Address:</label>
+  <textarea name="address" required></textarea><br/>
+
+  <h3>Products</h3>
+  <% products.forEach((product, i) => { %>
+    <div>
+      <input type="checkbox" name="productIds" value="<%= product._id %>" />
+      <%= product.name %> - $<%= product.price %>
+      <input type="number" name="quantities" value="1" min="1" />
+    </div>
+  <% }) %>
+
+  <button type="submit">Place Order</button>
+</form>

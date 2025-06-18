@@ -1,0 +1,9 @@
+<ul class="list-group">
+  <% complaints.forEach(c => { %>
+    <li class="list-group-item">
+      <strong>Order ID:</strong> <%= c.orderId ? c.orderId._id : 'N/A' %><br>
+      <strong>Message:</strong> <%= c.message %><br>
+      <strong>Submitted:</strong> <%= c.timestamp ? c.timestamp.toLocaleString() : 'Unknown time' %>
+    </li>
+  <% }) %>
+</ul>

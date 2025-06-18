@@ -1,0 +1,16 @@
+
+<div class="container mt-5">
+  <h2>Submit Complaint</h2>
+  <form action="/complaints" method="POST">
+    <div class="form-group">
+      <label>Order ID</label>
+      <input type="text" name="orderId" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label>Message</label>
+      <textarea name="message" class="form-control" rows="4" required></textarea>
+    </div>
+    <button class="btn btn-primary mt-3">Submit</button>
+  </form>
+</div>
+

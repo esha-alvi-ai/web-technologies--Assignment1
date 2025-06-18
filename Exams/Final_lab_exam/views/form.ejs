@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check out</title>
+    <link rel="stylesheet" href="/css/style2.css"> 
+
+
+</head>
+<body>
+    <div class="container">
+        <div class="sub-container">
+            <h2>Checkout Page</h2>
+            <form id="checkout-form">
+                <label >Full Name :</label>
+                <input type="text" name="name" id="name" required pattern="[A-Za-z]{3,}" title="Please enter a valid name">
+                <span class ="error ">only alphabets allowed</span>
+                <label >Email:</label>
+                <input type="email" name="email" id="email" required>
+                <span   class="error">enter a valid  email</span>
+                <label>Phone Number:</label>
+                <input type="text" id="phone" required pattern="^[0-9]{10,15}$">
+                <span class="error">Enter a valid phone number.</span>
+
+                <label>Address:</label>
+                <input type="text" id="address" required>
+                <span class="error">Address is required.</span>
+                <button   type="'Submit">Submit</button>
+            </form>
+
+        </div>
+        <div class="summary-container">
+        <h2>Payment Details</h2>
+            <label>Credit Card Number:</label>
+            <input type="text" id="card" required pattern="^[0-9]{16}$">
+            <span class="error">Must be 16 digits.</span>
+
+            <label>Expiry Date:</label>
+            <input type="month" id="expiry" required>
+            <span class="error">Must be a future date.</span>
+
+            <label>CVV:</label>
+            <input type="text" id="cvv" required pattern="^[0-9]{3}$">
+            <span class="error">Must be 3 digits.</span>
+        </div>
+    </div>
+
+
+    <script>
+        document.getElementById('checkout-form').addEventListener('submit', function(event) {
+            let isValid = true;
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+            let phone = document.getElementById('phone').value;
+            let address = document.getElementById('address').value;
+            let card = document.getElementById('card').value;
+            let expiry = new Date(document.getElementById('expiry').value + "-01"); // Fix expiry date issue
+            let cvv = document.getElementById('cvv').value;
+            let today = new Date();
+            
+            let namepattern = /^[A-Za-z ]+$/;
+            let emailpattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            let phonepattern = /^[0-9]{10,15}$/;
+            let cardpattern = /^[0-9]{16}$/;
+            let cvvpattern = /^[0-9]{3}$/;
+        
+            if (!namepattern.test(name)) {
+                alert("Please enter a valid name (alphabets only)");
+                isValid = false;
+            }
+            if (!emailpattern.test(email)) {
+                alert("Please enter a valid email");
+                isValid = false;
+            }
+            if (!phonepattern.test(phone)) {
+                alert("Please enter a valid phone number");
+                isValid = false;
+            }
+            if (address.trim() === "") {
+                alert("Please enter a valid address");
+                isValid = false;
+            }
+            if (!cardpattern.test(card)) {
+                alert("Please enter a valid card number (16 digits)");
+                isValid = false;
+            }
+            if (expiry.getFullYear() < today.getFullYear() || 
+                (expiry.getFullYear() === today.getFullYear() && expiry.getMonth() < today.getMonth())) {
+                alert("Please enter a valid expiry date (must be in the future).");
+                isValid = false;
+            }
+            if (!cvvpattern.test(cvv)) {
+                alert("Please enter a valid CVV (3 digits)");
+                isValid = false;
+            }
+        
+            if (!isValid) {
+                event.preventDefault();
+            } else {
+                alert("Form submitted successfully");
+            }
+        });
+        </script>
+        
+</body>
+</html>
